@@ -26,11 +26,18 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { Provider } from "react-redux";
+import configureStore from './src/store/configureStore';
+
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
+  
+  const store = configureStore();
+
   return (
-    <>
+
+    <Provider store={store}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -72,7 +79,7 @@ const App = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </Provider>
   );
 };
 
